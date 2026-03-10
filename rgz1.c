@@ -134,7 +134,3 @@ void program3()
 
     return 0;
 }
-int main() {
-    program3();
-    return 0;
-}
