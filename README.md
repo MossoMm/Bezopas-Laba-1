@@ -1,2 +1,3 @@
 # Bezopas-Laba-1
-Code for bezopas laba 1 of rgz 1 semester infa
+Repository for lab1 of "Fundamentals of Secure Software Development"
+Contains 3 rgz
