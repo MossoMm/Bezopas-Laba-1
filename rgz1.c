@@ -3,8 +3,6 @@
 #include <string.h>
 #include <ctype.h>
 
-
-
 // Проверка корректности всех вводимых данных
 int validate_input(int n, int k, const char *input_str) {
     // Проверка, что в строке только цифры и пробелы
@@ -31,7 +29,6 @@ int validate_input(int n, int k, const char *input_str) {
 
     return 1;
 }
-
 
 // Функция для преобразования шестнадцатеричного символа в число
 int hexCharToValue(char c) {
@@ -98,8 +95,8 @@ char *powerToHex(int n, int k) {
 
     return result;
 }
-void program3()
-{
+
+void program3() {
     int n, k;
     char input[100];
 
@@ -108,29 +105,27 @@ void program3()
     // Читаем всю строку ввода
     if (fgets(input, sizeof(input), stdin) == NULL) {
         printf("Ошибка ввода!\n");
-        return 1;
+        return;
     }
 
-    // Пытаемся преобразовать в числа
+    // ИСПРАВЛЕНИЕ: правильно используем sscanf для парсинга строки
     if (sscanf(input, "%d %d", &n, &k) != 2) {
         printf("Ошибка: необходимо ввести два целых числа через пробел.\n");
-        return 1;
+        return;
     }
 
     // Проверка корректности ввода (включая проверку символов)
     if (!validate_input(n, k, input)) {
-        return 1;
+        return;
     }
 
     char *hexResult = powerToHex(n, k);
 
     if (!hexResult) {
         printf("Ошибка выделения памяти!\n");
-        return 1;
+        return;
     }
 
     printf("Результат: %s\n", hexResult);
     free(hexResult);
-
-    return 0;
 }
