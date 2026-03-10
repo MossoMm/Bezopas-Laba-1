@@ -85,7 +85,7 @@ int isSpecial(double d) {
 
 /* ================= ОСНОВНАЯ ФУНКЦИЯ ================= */
 
-void doubleToDecimal() {
+void romantoint() {
     union {
         unsigned long long ll;
         double d;
@@ -224,11 +224,4 @@ void doubleToDecimal() {
     printf("printf значение (%.15lf):\n", num.d);
     printf("С точностью 15 знаков: %.15lf\n", num.d);
     printf("С точностью 60 знаков: %.60lf\n", num.d);
-}
-
-/* ================= MAIN ================= */
-
-int main() {
-    doubleToDecimal();
-    return 0;
 }
