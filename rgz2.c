@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <math.h>
-#include <stdlib.h>
-#include <time.h>
 
 #define DBL_LEN 64
 #define MANT_LEN 52
@@ -85,26 +83,6 @@ int isSpecial(double d) {
     return 0;
 }
 
-/* Генерация случайного double */
-double randomDouble() {
-    // Генерируем случайное 64-битное число
-    unsigned long long r = 0;
-    
-    // Заполняем случайными битами
-    for (int i = 0; i < 8; i++) {
-        r |= ((unsigned long long)(rand() % 256)) << (i * 8);
-    }
-    
-    // Преобразуем в double
-    union {
-        unsigned long long ll;
-        double d;
-    } converter;
-    
-    converter.ll = r;
-    return converter.d;
-}
-
 /* ================= ОСНОВНАЯ ФУНКЦИЯ ================= */
 
 void romantoint() {
@@ -113,36 +91,9 @@ void romantoint() {
         double d;
     } num;
     
-    int choice;
-    printf("Выберите способ ввода числа:\n");
-    printf("1 - Ввести с клавиатуры\n");
-    printf("2 - Сгенерировать случайное число\n");
-    printf("Ваш выбор: ");
-    
-    if (scanf("%d", &choice) != 1) {
+    printf("Введите число типа double: ");
+    if (scanf("%lf", &num.d) != 1) {
         printf("Ошибка ввода\n");
-        return;
-    }
-    
-    if (choice == 1) {
-        printf("Введите число типа double: ");
-        if (scanf("%lf", &num.d) != 1) {
-            printf("Ошибка ввода\n");
-            return;
-        }
-    } else if (choice == 2) {
-        // Инициализируем генератор случайных чисел, если ещё не инициализирован
-        static int seeded = 0;
-        if (!seeded) {
-            srand(time(NULL));
-            seeded = 1;
-        }
-        
-        num.d = randomDouble();
-        printf("Сгенерировано случайное число: %lf\n", num.d);
-        printf("(шестнадцатеричное представление: %llx)\n", num.ll);
-    } else {
-        printf("Неверный выбор\n");
         return;
     }
     
@@ -184,12 +135,7 @@ void romantoint() {
     printf("Экспонента: %d (смещённая: %d)\n", exp, exp + EXP_BIAS);
     printf("Мантисса: ");
     printBin(num.ll, 0, MANT_LEN);
-    
-    if (exp >= -1022) {
-        printf(" (с隐藏ым битом: 1)");
-    } else {
-        printf(" (денормализованное, скрытый бит: 0)");
-    }
+    printf(" (с隐藏ым битом: 1)");
     
     /* ================= ЦЕЛАЯ ЧАСТЬ ================= */
     
