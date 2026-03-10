@@ -98,8 +98,8 @@ char *powerToHex(int n, int k) {
 
     return result;
 }
-
-int main() {
+void program3()
+{
     int n, k;
     char input[100];
 
