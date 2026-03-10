@@ -135,9 +135,3 @@ void romantoint()
 
     printf("\n\nprintf value:\n%.60lf\n", num.d);
 }
-
-int main(void) {
-    
-    romantoint();
-    return 0;
-}
