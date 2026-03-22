@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
-
+#include <stdlib.h>
+#include <time.h>
 #define DBL_LEN 64
 #define MANT_LEN 52
 #define EXP_LEN 11
@@ -86,20 +87,18 @@ int isSpecial(double d) {
 /* ================= ОСНОВНАЯ ФУНКЦИЯ ================= */
 
 void romantoint() {
+    srand(time(NULL));
     union {
         unsigned long long ll;
         double d;
     } num;
     
     printf("Введите число типа double: ");
-    if (scanf("%lf", &num.d) != 1) {
-        printf("Ошибка ввода\n");
-        return;
-    }
+    num.d = rand();
     
     printf("\n=== ДВОИЧНОЕ ПРЕДСТАВЛЕНИЕ (64 бита) ===\n");
     printf("Биты: ");
-    printBin(num.ll, 0, DBL_LEN);
+    printBin(num.d, 0, DBL_LEN);
     printf("\n");
     
     // Проверка специальных значений
