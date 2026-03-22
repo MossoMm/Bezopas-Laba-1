@@ -5,7 +5,7 @@
 #include <time.h>
 #define MAX_ATTEMPTS 3
 #define MAX_LEN 50
-
+//lets test the linter! cpp-lint + clang-format
 void romantoint(void);
 void dvachisla(void);
 void program3(void);
