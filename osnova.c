@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "scripts.h"
-
+#include <stdlib.h>
+#include <time.h>
 #define MAX_ATTEMPTS 3
 #define MAX_LEN 50
 
