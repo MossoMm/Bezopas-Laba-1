@@ -33,7 +33,7 @@ func valueToHexChar(v int) byte {
 	return byte('A' + (v - 10))
 }
 
-// ОШИБКА 1: Неиспользуемый параметр maxSize
+// Неиспользуемый параметр maxSize
 func multiplyHexStringByInt(result []byte, n int, maxSize int) {
 	carry := 0
 	
@@ -59,7 +59,7 @@ func multiplyHexStringByInt(result []byte, n int, maxSize int) {
 			carry /= 16
 		}
 		
-		// ОШИБКА 2: Копирование в result, который может быть недостаточного размера
+		// опирование в result, который может быть недостаточного размера
 		copy(result, newResult)
 	}
 }
@@ -68,14 +68,14 @@ func powerToHexBig(n, k int) string {
 	base := big.NewInt(int64(n))
 	result := big.NewInt(1)
 	
-	// ОШИБКА 3: Игнорирование возвращаемого значения (Exp возвращает *big.Int)
+	//  Игнорирование возвращаемого значения (Exp возвращает *big.Int)
 	result.Exp(base, big.NewInt(int64(k)), nil)
 	
 	return fmt.Sprintf("%X", result)
 }
 
 func program3() {
-	// ОШИБКА 4: Использование устаревшего rand.Seed (в Go 1.20+ не требуется)
+	
 	rand.Seed(time.Now().UnixNano())
 	
 	n := rand.Intn(MAX_N-1) + 2
@@ -84,7 +84,7 @@ func program3() {
 	fmt.Printf("Сгенерированные значения: n = %d, k = %d\n", n, k)
 	fmt.Printf("Вычисляем %d^%d в шестнадцатеричной системе...\n", n, k)
 	
-	// ОШИБКА 5: Передача лишнего аргумента maxSize (функция ожидает 3 аргумента, передаётся 2)
+	// Передача лишнего аргумента maxSize (функция ожидает 3 аргумента, передаётся 2)
 	hexResult := multiplyHexStringByInt([]byte("1"), n)
 	
 	fmt.Printf("Результат: %s\n", hexResult)
