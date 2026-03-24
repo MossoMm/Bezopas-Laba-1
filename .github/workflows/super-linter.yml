@@ -24,13 +24,7 @@ jobs:
         uses: super-linter/super-linter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Режим: проверять только явно включенные языки
+          DEFAULT_BRANCH: main
           VALIDATE_ALL_CODEBASE: false
-          
-          
           VALIDATE_CLANG_FORMAT: true
           VALIDATE_CPP: true
-          
-          # ❌ ВЫКЛЮЧАЕМ (Полностью удалите или закомментируйте строки с =false)
-          # Не пишите здесь VALIDATE_PYTHON_PYLINT: false
-          # Просто не указывайте этот язык, и он не будет проверяться
