@@ -27,7 +27,7 @@ jobs:
           # Режим: проверять только явно включенные языки
           VALIDATE_ALL_CODEBASE: false
           
-          # ✅ ВКЛЮЧАЕМ (Оставляем только true)
+          
           VALIDATE_CLANG_FORMAT: true
           VALIDATE_CPP: true
           
