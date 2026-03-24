@@ -112,10 +112,6 @@ void program3() {
 
   
 
-    // Проверка корректности ввода (включая проверку символов)
-    if (!validate_input(n, k, input)) {
-        return;
-    }
 
     char *hexResult = powerToHex(n, k);
 
