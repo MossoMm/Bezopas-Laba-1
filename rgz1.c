@@ -3,6 +3,9 @@
 #include <string.h>
 #include <ctype.h>
 #include <time.h>
+
+int n = rand();
+int k = rand();
 // Проверка корректности всех вводимых данных
 int validate_input(int n, int k, const char *input_str) {
     // Проверка, что в строке только цифры и пробелы
@@ -97,14 +100,12 @@ char *powerToHex(int n, int k) {
 }
 
 void program3() {
-    int n, k;
     char input[100];
 
     printf("Введите основание и степень (n k): \n");
     srand(time(NULL)); 
     
-    int n = rand();
-    int k = rand();
+    
     
     printf("Заменяем на %d и %d:\n", n, k);
 
