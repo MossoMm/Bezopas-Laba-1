@@ -27,5 +27,6 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_CLANG_FORMAT: true
+          FIX_CLANG_FORMAT: true
           DEFAULT_BRANCH: "main"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
