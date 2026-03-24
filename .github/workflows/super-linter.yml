@@ -26,8 +26,6 @@ jobs:
         
         env:
           VALIDATE_CPP: true
-          VALIDATE_ALL_CODEBASE: false
-          VALIDATE_CLANG_FORMAT: false
           DEFAULT_BRANCH: "main"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
