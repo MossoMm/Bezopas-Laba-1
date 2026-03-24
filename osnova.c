@@ -17,6 +17,7 @@ int main() {
     char CORRECT_PASSWORD[MAX_LEN];
     int attempts = 0;
     int login_success = 0;
+    float attempts1 = (float)attempts;
     const char* filename = "./passlog.txt";
 
     FILE* fp = fopen(filename, "r");
