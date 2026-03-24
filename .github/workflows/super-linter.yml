@@ -1,16 +1,10 @@
-# This workflow executes several linters on changed files based on languages used in your code base whenever
-# you push a code or open a pull request.
-#
-# You can adjust the behavior by modifying this file.
-# For more information, see:
-# https://github.com/github/super-linter
 name: Lint Code Base
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   pull_request:
-    branches: [main]
+    branches: [main, master]
 
 jobs:
   build:
@@ -24,18 +18,19 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          # Full history is required for Super-Linter to detect changed files
           fetch-depth: 0
 
-      - name: Run Super-Linter
-        uses: super-linter/super-linter@v7
+      - name: Super-Linter
+        uses: super-linter/super-linter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Only lint new or edited files for better performance
+          # Режим: проверять только явно включенные языки
           VALIDATE_ALL_CODEBASE: false
-          # Specific C/C++ linters
+          
+          # ✅ ВКЛЮЧАЕМ (Оставляем только true)
           VALIDATE_CLANG_FORMAT: true
           VALIDATE_CPP: true
-          # Disable other common linters if not needed
-          VALIDATE_MARKDOWN: false
-          VALIDATE_YAML: false
+          
+          # ❌ ВЫКЛЮЧАЕМ (Полностью удалите или закомментируйте строки с =false)
+          # Не пишите здесь VALIDATE_PYTHON_PYLINT: false
+          # Просто не указывайте этот язык, и он не будет проверяться
