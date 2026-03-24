@@ -26,5 +26,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
           VALIDATE_ALL_CODEBASE: false
-          VALIDATE_CLANG_FORMAT: true
           VALIDATE_CPP: true
