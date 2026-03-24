@@ -100,10 +100,11 @@ char *powerToHex(int n, int k) {
 
 void program3() {
     char input[100];
+    srand(time(NULL)); 
     int n = rand();
     int k = rand();
     printf("Введите основание и степень (n k): \n");
-    srand(time(NULL)); 
+    
     
     
     
