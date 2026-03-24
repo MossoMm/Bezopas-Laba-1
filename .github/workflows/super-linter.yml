@@ -8,24 +8,34 @@ name: Lint Code Base
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [main]
   pull_request:
-    branches: [ "main" ]
+    branches: [main]
+
 jobs:
-  run-lint:
+  build:
+    name: Lint Code Base
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: write
+
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          # Full git history is needed to get a proper list of changed files within `super-linter`
+          # Full history is required for Super-Linter to detect changed files
           fetch-depth: 0
 
-      - name: Lint Code Base
-        uses: github/super-linter@v4
-        
+      - name: Run Super-Linter
+        uses: super-linter/super-linter@v7
         env:
-          VALIDATE_CPP: true
-          DEFAULT_BRANCH: "main"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+          # Only lint new or edited files for better performance
+          VALIDATE_ALL_CODEBASE: false
+          # Specific C/C++ linters
+          VALIDATE_CLANG_FORMAT: true
+          VALIDATE_CPP: true
+          # Disable other common linters if not needed
+          VALIDATE_MARKDOWN: false
+          VALIDATE_YAML: false
